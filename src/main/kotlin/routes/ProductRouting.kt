@@ -1,7 +1,6 @@
 package com.example.routes
 
 import com.example.models.ProductDTO
-import com.example.models.toProductDTO
 import com.example.services.*
 import io.ktor.http.*
 import io.ktor.server.request.*

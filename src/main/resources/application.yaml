@@ -7,7 +7,7 @@ ktor:
 
 database:
   driver: org.postgresql.Driver
-  host: {DATABASE_HOST}
+  host: ${DATABASE_HOST}
   user: ${DATABASE_USERNAME}
   password: ${DATABASE_PASSWORD}
   name: ${DATABASE_NAME}

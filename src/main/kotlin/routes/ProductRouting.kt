@@ -1,6 +1,7 @@
 package com.example.routes
 
-import com.example.model.ProductDTO
+import com.example.models.ProductDTO
+import com.example.models.toProductDTO
 import com.example.services.*
 import io.ktor.http.*
 import io.ktor.server.request.*
@@ -33,7 +34,7 @@ fun Route.productRoutes() {
             call.respond(ProductDTO(id, product.name, product.price))
         }
 
-        put("/{id}") {
+        put {
             val updated = call.receive<ProductDTO>()
 
             val rowsAffected = updateProduct(updated)

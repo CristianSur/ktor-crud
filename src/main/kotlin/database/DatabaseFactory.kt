@@ -1,10 +1,11 @@
 package com.example.database
 
-import com.example.model.Products
+import com.example.models.Products
 import io.ktor.server.application.*
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.v1.jdbc.Database
+import org.jetbrains.exposed.v1.jdbc.SchemaUtils
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
+
 
 object DatabaseFactory {
     /*
@@ -24,7 +25,7 @@ object DatabaseFactory {
         val driver = config.property("driver").getString()
         
         // Read database host from environment variable, default to localhost
-        val host = config.property("name").getString()
+        val host = config.property("host").getString()
         val user =  config.property("user").getString()
         val password = config.property("password").getString()
         val databaseName =  config.property("name").getString()

@@ -1,21 +1,25 @@
 package com.example.services
 
-import com.example.model.ProductDTO
-import com.example.model.Products
-import com.example.model.toProductDTO
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.deleteWhere
-import org.jetbrains.exposed.sql.insertAndGetId
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.update
+import com.example.models.ProductDTO
+import com.example.models.Products
+import com.example.models.toProductDTO
+import org.jetbrains.exposed.v1.core.eq
+import org.jetbrains.exposed.v1.jdbc.deleteWhere
+import org.jetbrains.exposed.v1.jdbc.insertAndGetId
+import org.jetbrains.exposed.v1.jdbc.selectAll
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
+import org.jetbrains.exposed.v1.jdbc.update
+
 
 fun getAllProducts() = transaction {
-    Products.selectAll()
+    Products.selectAll().map { it.toProductDTO() }
 }
 
 fun getProductById(id: Int) = transaction {
-    Products.select(Products.id eq id).mapNotNull { it.toProductDTO() }.singleOrNull()
+    Products.selectAll()
+        .where { Products.id eq id }
+        .singleOrNull()
+        ?.toProductDTO()
 }
 
 fun saveProduct(product: ProductDTO) = transaction {

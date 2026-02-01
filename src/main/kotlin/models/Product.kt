@@ -1,8 +1,9 @@
-package com.example.model
+package com.example.models
 
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.dao.id.IntIdTable
-import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.v1.core.ResultRow
+import org.jetbrains.exposed.v1.core.dao.id.IntIdTable
+
 
 object Products : IntIdTable() {
     val name = varchar("name", 100)

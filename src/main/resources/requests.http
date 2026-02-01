@@ -3,6 +3,9 @@
 ### Get products
 GET {{HOST}}/products
 
+### Get product by id
+GET {{HOST}}/products/5
+
 ### Create new product
 POST {{HOST}}/products
 Content-Type: application/json
@@ -17,13 +20,10 @@ PUT {{HOST}}/products
 Content-Type: application/json
 
 {
-  "id": 5,
+  "id": 1,
   "name": "Updated Product",
   "price": 29.99
 }
-
-### Get product by id
-GET {{HOST}}/products/5
 
 ### Delete product by id
 DELETE {{HOST}}/products/1
